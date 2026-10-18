@@ -16,8 +16,12 @@
     <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="nav-links" aria-label="Page sections">
       <a href="#top">Home</a>
-      <a href="#showcase">Showcase</a>
-      <a href="videoshowcase.html">Showcase2</a>
+      <div class="nav-drop">
+        <a href="#showcase">Showcase <span aria-hidden="true">&#9662;</span></a>
+        <div class="nav-drop-menu">
+          <a href="videoshowcase.html">Showcase2</a>
+        </div>
+      </div>
       <a href="#projects">Projects</a>
       <a href="#services">Edits</a>
       <a href="#contact">Contact</a>
@@ -26,19 +30,19 @@
 
   <main id="top">
     <section class="hero section" aria-labelledby="hero-title">
-      <video class="hero-video" autoplay muted loop playsinline poster="assets/videos/BookerTcom.mp4">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/img/posters/bookertcom.webp">
         <source src="assets/videos/BookerTcom.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
 
       <div class="hero-content reveal">
-        <p class="eyebrow">Video edits showcase</p>
-        <h1 id="hero-title">Limitless Studio</h1>
-        <p class="hero-copy">Cinematic editing, dynamic motion graphics, music visuals, commercial campaigns, and viral-ready social content crafted to make every frame unforgettable.</p>
+        <p class="eyebrow">Video edits Library</p>
+        <!-- <h1 id="hero-title">Limitless Studio</h1> -->
+        <!-- <p class="hero-copy">Cinematic editing, dynamic motion graphics, music visuals, commercial campaigns, and viral-ready social content crafted to make every frame unforgettable.</p> -->
 
         <div class="hero-actions">
-          <a class="button primary" href="#projects">Projects</a>
-          <a class="button ghost" href="#contact">Book a session</a>
+          <a class="button ghost" href="#projects">Projects</a>
+          <a class="button primary " href="#contact">Contact</a>
         </div>
       </div>
     </section>
@@ -71,170 +75,24 @@
         <li><video src="assets/videos/BookerTcom.mp4" autoplay muted loop playsinline></video></li>
         <li><video src="assets/videos/BookerTcom.mp4" autoplay muted loop playsinline></video></li>
       </ul>
-
-
-      <!-- <ul class="slideshow" aria-hidden="true">
-        <li><video src="assets/videos/mickey.mp4" autoplay muted loop playsinline></video></li>
-        <li><video src="assets/videos/mickeyjoell.mp4" autoplay muted loop playsinline></video></li>
-        <li><video src="assets/videos/UnFlowZaza.mp4" autoplay muted loop playsinline></video></li>
-        <li><video src="assets/videos/FatmelzToLoDia.mp4" autoplay muted loop playsinline></video></li>
-        <li><video src="assets/videos/Clinvidremix1min.mp4" autoplay muted loop playsinline></video></li>
-      </ul> -->
+      <!-- Alternate playlist: mickey, mickeyjoell, UnFlowZaza, FatmelzToLoDia, Clinvidremix1min -->
     </section>
-    
 
-    <section id="projects" class="section projects" >
+    <section id="projects" class="section projects">
       <div class="section-heading reveal">
         <p class="eyebrow">Selected edits</p>
         <h2>Limitless Studio Showcase</h2>
         <p>From cinematic music videos to commercial campaigns and motion-driven visuals, every project is crafted to captivate, inspire, and leave a lasting impression.</p>
       </div>
 
-      <div class="featured-video reveal">
-        <video src="assets/videos/mickeyjoell.mp4" controls autoplay loop muted playsinline preload="metadata"></video>
-      </div>
+      <figure class="featured-video reveal">
+        <video src="assets/videos/mickeyjoell.mp4" poster="assets/img/posters/mickeyjoell.webp" controls autoplay loop muted playsinline preload="metadata"></video>
+        <figcaption><span class="eyebrow">Featured edit</span> Mickey &times; Joell</figcaption>
+      </figure>
 
-      <div class="section-heading project-subheading reveal">
-        <p class="eyebrow">Limitless Remix</p>
-      </div>
-
-      <div class="video-grid">
-        <article class="video-card reveal">
-          <video data-src="assets/videos/mickey.mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Mickey Edit</h3>
-            <p>Music visual cut with clean pacing and stylized motion.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Dariel30secsVideoCompress.mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Dariel 30 Secs</h3>
-            <p>Short-form promo edit built for quick social impact.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Superjoell(Preview-7secs).mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Superjoell Preview</h3>
-            <p>Seven-second teaser with fast visual energy.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Superjoell(1st).mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Superjoell Cut 01</h3>
-            <p>Performance-driven sequence with cinematic rhythm.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Superjoell(2nd).mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Superjoell Cut 02</h3>
-            <p>Alternate music edit with punchy timing.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Superjoell(3rd).mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Superjoell Cut 03</h3>
-            <p>Stylized cut variation for a stronger visual flow.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Superjoell(4rd).mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Superjoell Cut 04</h3>
-            <p>High-energy scene work with layered motion.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/Superjoell(5th).mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Superjoell Cut 05</h3>
-            <p>Polished sequence with cinematic color and pacing.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/ad 1.mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Promo Cut 01</h3>
-            <p>Short-form ad energy with clean pacing.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/ad 2.mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Promo Cut 02</h3>
-            <p>Fast product rhythm for social feeds.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/ad 3.mp4" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Promo Cut 03</h3>
-            <p>Bold contrast, movement, and impact.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/animationstation.webm" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Animation Station</h3>
-            <p>Motion texture and visual experiments.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/cinematictiles.webm" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Cinematic Tiles</h3>
-            <p>Modular cuts for dramatic transitions.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/GlithPack.webm" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Glitch Pack</h3>
-            <p>Distortion, energy, and punchy style.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/lightleak.webm" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Light Leak</h3>
-            <p>Soft atmosphere for cinematic moments.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/SaberTransitions.webm" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Saber Transitions</h3>
-            <p>Sharp motion accents and light movement.</p>
-          </div>
-        </article>
-
-        <article class="video-card reveal">
-          <video data-src="assets/videos/TextOverlaid.webm" muted loop playsinline preload="none"></video>
-          <div>
-            <h3>Text Overlay</h3>
-            <p>Readable titles with motion-first timing.</p>
-          </div>
-        </article>
-      </div>
+      <!-- Filters and tiles are generated from the `works` list in assets/js/script.js -->
+      <div class="filters reveal" aria-label="Filter the gallery"></div>
+      <div class="gallery"></div>
     </section>
 
     <section id="services" class="section services">
@@ -244,39 +102,83 @@
       </div>
 
       <div class="service-grid">
-        <div class="service reveal">
-          <span>01</span>
+        <article class="service reveal" data-num="01">
+          <svg class="service-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
           <h3>Music Videos</h3>
           <p>Rhythm-driven cuts, animated accents, and visual pacing that follows the track.</p>
-        </div>
+          <ul><li>Beat-synced cuts</li><li>Color grading</li><li>VFX &amp; transitions</li></ul>
+        </article>
 
-        <div class="service reveal">
-          <span>02</span>
+        <article class="service reveal" data-num="02">
+          <svg class="service-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 8.5a5 5 0 0 1 0 7M19 5.5a9 9 0 0 1 0 13"/></svg>
           <h3>Promo Ads</h3>
           <p>Quick edits for campaigns, releases, services, and product-style reels.</p>
-        </div>
+          <ul><li>Social-first formats</li><li>Hook &amp; call to action</li><li>Fast delivery</li></ul>
+        </article>
 
-        <div class="service reveal">
-          <span>03</span>
+        <article class="service reveal" data-num="03">
+          <svg class="service-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
           <h3>Motion Graphics</h3>
           <p>Glitch, typography, overlays, transitions, and cinematic texture packs.</p>
-        </div>
+          <ul><li>Animated titles</li><li>Glitch &amp; light FX</li><li>Overlay packs</li></ul>
+        </article>
       </div>
     </section>
 
     <section id="contact" class="section contact">
       <div class="contact-panel reveal">
         <p class="eyebrow">Need a video editor?</p>
-        <h2>Bring the idea. Limitless Studio brings the motion.</h2>
-        <a class="button primary" href="mailto:v.clainer11@gmail.com">v.clainer11@gmail.com</a>
+        <h2>Bring the idea. <span class="neon-text">Limitless Studio</span> brings the motion.</h2>
+        <p class="contact-copy">Send your footage, deadline, and the vibe you want &mdash; we&rsquo;ll cut it into a visual that stops the scroll.</p>
+        <ul class="contact-tags">
+          <li>Music Videos</li>
+          <li>Promo Ads</li>
+          <li>Motion Graphics</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button neon" href="mailto:v.clainer11@gmail.com?subject=Limitless%20Studio%20Project">Email the studio</a>
+          <a class="button ghost" href="#projects">See the work</a>
+        </div>
+        <a class="contact-email" href="mailto:v.clainer11@gmail.com">v.clainer11@gmail.com</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Created and designed by <a href="https://clainerjvl.com/" target="_blank" rel="noopener">ClainerV7</a></p>
-    <p>Limitless Universal LLC &copy; 2026</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">Limitless Studio</a>
+        <p>Cinematic edits, music visuals, and motion design crafted to make every frame unforgettable.</p>
+      </div>
+      <nav class="footer-col" aria-label="Footer">
+        <h3>Explore</h3>
+        <a href="#showcase">Showcase</a>
+        <a href="videoshowcase.html">Showcase2</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Edits</a>
+      </nav>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <a href="mailto:v.clainer11@gmail.com">v.clainer11@gmail.com</a>
+        <a href="https://clainerjvl.com/" target="_blank" rel="noopener">clainerjvl.com</a>
+      </div>
+    </div>
+    <p class="footer-mark" aria-hidden="true">LIMITLESS</p>
+    <div class="footer-bottom">
+      <p>Limitless Universal LLC &copy; 2026</p>
+      <p>Created and designed by <a href="https://clainerjvl.com/" target="_blank" rel="noopener">ClainerV7</a></p>
+    </div>
   </footer>
+
+  <dialog class="lightbox" aria-label="Video player">
+    <button class="lb-close" type="button" aria-label="Close">&times;</button>
+    <button class="lb-nav" type="button" data-step="-1" aria-label="Previous video">&lsaquo;</button>
+    <figure>
+      <video controls playsinline></video>
+      <figcaption><span class="eyebrow"></span><h3></h3><p></p></figcaption>
+    </figure>
+    <button class="lb-nav" type="button" data-step="1" aria-label="Next video">&rsaquo;</button>
+  </dialog>
 
   <script src="assets/js/script.js"></script>
 </body>
