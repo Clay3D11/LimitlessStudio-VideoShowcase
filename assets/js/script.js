@@ -73,7 +73,9 @@ const filters = document.querySelector(".filters");
 
 gallery.innerHTML = works.map(([file, title, cat, , shape, time], i) => `
   <button class="tile${shape ? ` tile--${shape}` : ""}" type="button" data-i="${i}" data-cat="${cat}" aria-label="Play ${title}">
-    <img src="${posterSrc(file)}" alt="" loading="lazy" decoding="async">
+    ${cat === "music"
+      ? `<video src="${videoSrc(file)}" poster="${posterSrc(file)}" autoplay muted loop playsinline preload="none"></video>`
+      : `<img src="${posterSrc(file)}" alt="" loading="lazy" decoding="async">`}
     <span class="tile-time">${time}</span>
     <span class="tile-info"><small>${categories[cat]}</small><strong>${title}</strong></span>
   </button>`).join("");
@@ -96,13 +98,13 @@ filters.addEventListener("click", event => {
 });
 
 /* One shared muted preview plays on hover, so only one video ever loads at a time */
-if (matchMedia("(hover: hover)").matches && !motionQuery.matches) {
+if (matchMedia("(hover: hover)").matches) {
   const preview = Object.assign(document.createElement("video"), { muted: true, loop: true, playsInline: true, className: "tile-preview" });
   preview.addEventListener("playing", () => preview.classList.add("is-playing"));
 
   gallery.addEventListener("pointerover", event => {
     const tile = event.target.closest(".tile");
-    if (!tile || tile.contains(preview)) return;
+    if (!tile || tile.contains(preview) || tile.dataset.cat === "music") return;
 
     preview.classList.remove("is-playing");
     preview.src = videoSrc(works[tile.dataset.i][0]);
