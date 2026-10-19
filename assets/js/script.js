@@ -67,10 +67,6 @@ const works = [
 const slug = file => file.replace(/\.\w+$/, "").replace(/[()]/g, "").replace(/ /g, "-").toLowerCase();
 const videoSrc = file => `assets/videos/${encodeURI(file)}`;
 const posterSrc = file => `assets/img/posters/${slug(file)}.webp`;
-/* Tiles play a light 8s, 640px loop (assets/videos/previews); the lightbox plays the full video.
-   New .mp4 without a preview falls back to the full file. */
-const previewSrc = file => file.endsWith(".mp4") ? `assets/videos/previews/${slug(file)}.mp4` : videoSrc(file);
-const fallback = file => `onerror="this.onerror=null;this.src='${videoSrc(file)}'"`;
 
 /* ---------- Gallery tiles & filters ---------- */
 const gallery = document.querySelector(".gallery");
@@ -79,7 +75,7 @@ const filters = document.querySelector(".filters");
 gallery.innerHTML = works.map(([file, title, cat, , shape, time], i) => `
   <button class="tile${shape ? ` tile--${shape}` : ""}" type="button" data-i="${i}" data-cat="${cat}" aria-label="Play ${title}">
     ${cat === "music"
-      ? `<video src="${previewSrc(file)}" poster="${posterSrc(file)}" autoplay muted loop playsinline preload="none" ${fallback(file)}></video>`
+      ? `<video src="${videoSrc(file)}" poster="${posterSrc(file)}" autoplay muted loop playsinline preload="none"></video>`
       : `<img src="${posterSrc(file)}" alt="" loading="lazy" decoding="async">`}
     <span class="tile-time">${time}</span>
     <span class="tile-info"><small>${categories[cat]}</small><strong>${title}</strong></span>
@@ -114,9 +110,7 @@ if (matchMedia("(hover: hover)").matches) {
     if (!tile || tile.contains(preview) || tile.dataset.cat === "music") return;
 
     preview.classList.remove("is-playing");
-    const file = works[tile.dataset.i][0];
-    preview.onerror = () => { preview.onerror = null; preview.src = videoSrc(file); };
-    preview.src = previewSrc(file);
+    preview.src = videoSrc(works[tile.dataset.i][0]);
     tile.append(preview);
     preview.play().catch(() => {});
   });
