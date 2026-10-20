@@ -35,13 +35,13 @@ const works = [
   ["Superjoell(4rd).mp4", "Superjoell 4", "music", "High-energy scene work with layered motion.", "", "0:13"],
   ["Superjoell(5th).mp4", "Superjoell 5", "music", "Polished sequence with cinematic color and pacing.", "", "0:09"],
   
-  ["Famelz2026.mp4", "Famelz", "music", "Luxury performance visual with bold lighting and smooth camera moves.", "", "0:25"],
-  ["FatmelzToLoDia.mp4", "Fatmelz · To Lo Dia", "music", "Up-close performance edit cut tight to the beat.", "", "1:00"],
+  // ["Famelz2026.mp4", "Famelz", "music", "Luxury performance visual with bold lighting and smooth camera moves.", "", "0:25"],
+  // ["FatmelzToLoDia.mp4", "Fatmelz · To Lo Dia", "music", "Up-close performance edit cut tight to the beat.", "", "1:00"],
+
   ["mickey.mp4", "Mickey Then", "music", "Music visual cut with clean pacing and stylized motion.", "w", "0:24"],
-  ["UnFlowZaza.mp4", "Un Flow Zaza", "music", "Street-styled music video with graffiti backdrops and punchy cuts.", "", "0:25"],
 
-
-  ["Clinvidremix1min.mp4", "Clin Remix", "music", "One-minute remix cut built around motion and attitude.", "", "1:00"],
+  // ["UnFlowZaza.mp4", "Un Flow Zaza", "music", "Street-styled music video with graffiti backdrops and punchy cuts.", "", "0:25"],
+  // ["Clinvidremix1min.mp4", "Clin Remix", "music", "One-minute remix cut built around motion and attitude.", "", "1:00"],
   // ["wow-videogif.mp4", "WOW", "music", "Vibrant performance edit with saturated, high-energy color.", "", "0:27"],
 
 
