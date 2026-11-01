@@ -134,6 +134,11 @@ a {
   transform: translate(-50%, 0);
 }
 
+/* "Showcase" inside the list is only needed on phones */
+.nav-drop-menu .nav-drop-self {
+  display: none;
+}
+
 .nav-drop:hover > a span,
 .nav-drop:focus-within > a span {
   transform: rotate(180deg);
@@ -1068,18 +1073,44 @@ h3 {
     display: flex;
   }
 
-  /* No hover on phones: Showcase2 is listed under Showcase */
-  .nav-drop > a span {
-    display: none;
+  /* No hover on phones: tapping Showcase opens its dropdown list */
+  .nav-drop > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-drop > a span,
+  .nav-drop:is(:hover, :focus-within) > a span {
+    font-size: 1em;
+    transform: none;
+  }
+
+  .nav-drop.is-open > a {
+    color: var(--accent);
+  }
+
+  .nav-drop.is-open > a span {
+    transform: rotate(180deg);
   }
 
   .nav-drop-menu,
   .nav-drop:is(:hover, :focus-within) .nav-drop-menu {
+    display: none;
     position: static;
-    padding: 0 0 0 1rem;
+    padding: 0 0 0.4rem 1rem;
+    border-left: 1px solid rgba(0, 232, 255, 0.35);
     opacity: 1;
     visibility: visible;
     transform: none;
+  }
+
+  .nav-drop.is-open .nav-drop-menu {
+    display: block;
+  }
+
+  .nav-drop-menu .nav-drop-self {
+    display: block;
   }
 
   .nav-drop-menu a {
@@ -1101,6 +1132,21 @@ h3 {
   .button {
     min-height: 60px;
     font-size: 1.1rem;
+  }
+
+  /* Hero Projects / Contact: small and side by side, like desktop (Contact first) */
+  .hero .hero-actions .button {
+    width: auto;
+    min-height: 3rem;
+    font-size: 1rem;
+  }
+
+  .hero .hero-actions .button.primary {
+    order: -1;
+  }
+
+  .hero .hero-actions {
+    justify-content: center;
   }
 
   .filters button {

@@ -9,8 +9,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Icons (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Quick dock (Store / Tickets / Music buttons) -->
+  <link rel="stylesheet" href="assets/css/quickdock.css">
+
+  <!-- Popups: Store, Music player, Tickets -->
+  <link rel="stylesheet" href="assets/css/storemodal.css">
+  <link rel="stylesheet" href="assets/css/ipodmodal.css">
+  <link rel="stylesheet" href="assets/css/ipodstyle.css">
+  <link rel="stylesheet" href="assets/css/ticketstoremodal.css">
+  <link rel="stylesheet" href="assets/css/ticketstorestyle.css">
+  <link rel="stylesheet" href="assets/css/popupextras.css">
+
+  <!-- Nav mini player (Kulosa, from famelz.com) -->
+  <link rel="stylesheet" href="assets/css/navplayer.css">
 </head>
 <body>
+
   <header class="site-header" aria-label="Primary navigation">
     <a class="logo" href="#top" aria-label="Limitless Studio home">Limitless Studio</a>
     <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
@@ -26,8 +45,69 @@
       <a href="#projects">Projects</a>
       <a href="#services">Edits</a>
       <a href="#contact">Contact</a>
+
+      <span class="nav-player-sep" aria-hidden="true">|</span>
+
+      <!-- Nav mini player: song title + looping GIF play/pause button -->
+      <div class="audio-player">
+        <div class="song-title"><h7></h7></div>
+        <button type="button" class="play-btn" id="playPauseBtn" aria-label="Pause Kulosa">❚❚</button>
+        <audio id="audio" src="assets/music/Kulosa1.mp3" autoplay></audio>
+      </div>
     </nav>
   </header>
+
+
+  <!-- Main Page back button -->
+  <!-- <a class="navigation-button" href="https://limitlessvisual.com/" aria-label="Back to home">
+    <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z"/></svg>             
+  </a>
+
+  <style>
+  /*=============================
+    BACK BUTTON
+  =============================*/
+    .navigation-button {
+      position: fixed;
+      top: 90%;
+      right: 3%;
+      z-index: 1;
+      padding: 0.3em 0.6em 0.3em 1.8em;
+      color: #fff;
+      font-size: 1.5rem;
+      transform: translateY(-50%);
+    }
+
+    .navigation-button svg {
+      display: block;
+      width: 1em;
+      height: 1em;
+    }
+  </style> -->
+
+
+  <!-- Quick dock: Store / Tickets / Music -->
+  <div class="quick-dock">
+    <div class="quick-dock-menu" id="quickDockMenu">
+      <button type="button" id="openModalBtn" class="quick-dock-item" style="--a: -90deg; --ld: 46px; --i: 0" aria-label="Open store">
+        <span class="quick-dock-label">Store</span>
+        <span class="quick-dock-icon"><i class="fas fa-shopping-bag" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" id="tickets" class="quick-dock-item" style="--a: -135deg; --ld: 66px; --i: 1" aria-label="Open tickets">
+        <span class="quick-dock-label">Tickets</span>
+        <span class="quick-dock-icon"><i class="fas fa-ticket-alt" aria-hidden="true"></i></span>
+      </button>
+      <button type="button" id="ipodmodal" class="quick-dock-item" style="--a: 180deg; --ld: 64px; --i: 2" aria-label="Open music player">
+        <span class="quick-dock-label">Music</span>
+        <span class="quick-dock-icon">
+          <span class="quick-dock-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        </span>
+      </button>
+    </div>
+    <button type="button" class="quick-dock-toggle" aria-expanded="false" aria-controls="quickDockMenu" aria-label="Open quick menu">
+      <span class="quick-dock-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
 
   <main id="top">
     <section class="hero section" aria-labelledby="hero-title">
@@ -68,31 +148,8 @@
       </div>
     </section>
 
-    <a class="navigation-button" href="https://limitlessvisual.com/" aria-label="Back to home">
-    <svg viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zm28.9-143.6L209.4 288H392c13.3 0 24-10.7 24-24v-16c0-13.3-10.7-24-24-24H209.4l75.5-72.4c9.7-9.3 9.9-24.8.4-34.3l-11-10.9c-9.4-9.4-24.6-9.4-33.9 0L107.7 239c-9.4 9.4-9.4 24.6 0 33.9l132.7 132.7c9.4 9.4 24.6 9.4 33.9 0l11-10.9c9.5-9.5 9.3-25-.4-34.3z"/></svg>
-  </a>
 
-  <style>
-  /*=============================
-  BACK BUTTON
-=============================*/
-.navigation-button {
-  position: fixed;
-  top: 90%;
-  right: 3%;
-  z-index: 1;
-  padding: 0.3em 0.6em 0.3em 1.8em;
-  color: #fff;
-  font-size: 1.5rem;
-  transform: translateY(-50%);
-}
-
-.navigation-button svg {
-  display: block;
-  width: 1em;
-  height: 1em;
-}
-</style>
+      
 
 
 
@@ -130,7 +187,7 @@
     <section id="projects" class="section projects">
       <div class="section-heading reveal">
         <p class="eyebrow">Selected edits</p>
-        <h2>Limitless Studio</h2>
+        <h2>Limitless Studio</h2> 
         <p>Cinematic videos - Ads - Motion Graphics.</p>
       </div>
 
@@ -229,6 +286,143 @@
     <button class="lb-nav" type="button" data-step="1" aria-label="Next video">&rsaquo;</button>
   </dialog>
 
+  <!-- Store popup -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="closeBtn">&times;</span>
+      <div class="modal-body">
+        <section id="merch">
+          <div class="ul-pricing-grid title">
+            <div class="ul-card">
+              <h3>Associate/Partner</h3>
+              <div class="ul-price ul-year">
+                $--.-- <span>/ year</span>
+              </div>
+              <p class="ul-desc">
+                Built for brands, labels, and business owners ready to scale.
+              </p>
+              <ul>
+                <li>Full store integration</li>
+                <li>Brand & product placement</li>
+                <li>Exclusive collaboration campaigns</li>
+                <li>Custom merchandise drops</li>
+                <li>Dedicated account support</li>
+              </ul>
+              <a role="button" class="shadow__btn">Coming Soon</a>
+            </div>
+          </div>
+          <h7 style="margin: 0 auto;">25% Revenue <br> </h7>
+          <h7 style="margin: 0 auto;">stocking <br>Selling <br> Shipping</h7>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Music player popup -->
+  <div id="ipodModal" class="modal">
+    <div class="ipod-modal-content">
+      <span class="ipodCloseBtn">&times;</span>
+      <div class="modal-body">
+        <section id="playlist" style="border-radius: 50%;">
+          <div id="player" class="player">
+            <div class="wrapper">
+              <div class="details">
+                <div class="now-playing">PLAYING x OF y</div>
+                <div class="track-art"></div>
+                <div class="track-name">Track Name</div>
+                <div class="track-artist">Track Artist</div>
+              </div>
+
+              <div class="slider_container">
+                <div class="current-time">00:00</div>
+                <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+                <div class="total-duration">00:00</div>
+              </div>
+
+              <div class="buttons">
+                <div class="random-track" onclick="randomTrack()">
+                  <i class="fas fa-random fa-2x" title="random"></i>
+                </div>
+                <div class="prev-track" onclick="prevTrack()">
+                  <i class="fa fa-step-backward fa-2x"></i>
+                </div>
+                <div class="playpause-track" onclick="playpauseTrack()">
+                  <i class="fa fa-play-circle fa-5x"></i>
+                </div>
+                <div class="next-track" onclick="nextTrack()">
+                  <i class="fa fa-step-forward fa-2x"></i>
+                </div>
+                <div class="repeat-track" onclick="repeatTrack()">
+                  <i class="fa fa-repeat fa-2x" title="repeat"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tickets popup -->
+  <div id="ticketsModal" class="modal">
+    <div class="tickets-modal-content">
+      <span class="ticketsCloseBtn">&times;</span>
+      <div class="modal-body">
+        <h2 class="titles">Tickets</h2>
+        <div class="container-rtl">
+          <div class="column-br2">
+            <div>
+              <div>
+                <h3 class="title-lf6">United Palaza</h3>
+                <div class="show-qlj">
+                  <h3>Jun 18, 2024</h3>
+                  <h3>NY, NY</h3>
+                </div>
+              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
+
+              <br>
+              <br>
+
+              <div>
+                <h3 class="title-lf6">Coachella</h3>
+                <div class="show-qlj">
+                  <h5 class="show-9ar">Jul 11, 2024</h5>
+                  <h5 class="show-cqt">California</h5>
+                </div>
+              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
+
+              <br>
+              <br>
+
+              <div>
+                <h3 class="title-lf6">Lollapalooza</h3>
+                <div class="show-qlj">
+                  <h5 class="show-9ar">Mar 28, 2020</h5>
+                  <h5 class="show-cqt">Colombia</h5>
+                </div>
+              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
+
+              <div>
+                <h3 class="title-lf6">Centro Olimpico</h3>
+                <div class="show-qlj">
+                  <h5 class="show-9ar">Agu 27, 2024</h5>
+                  <h5 class="show-cqt">D.R</h5>
+                </div>
+              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/js/script.js"></script>
+
+  <!-- Music player + popups / quick dock -->
+  <script src="assets/js/ipodstyle.js"></script>
+  <script src="assets/js/popupmodals.js"></script>
+
+  <!-- Nav mini player (loads after ipodstyle.js so only one song plays at a time) -->
+  <script src="assets/js/navplayer.js"></script>
 </body>
 </html>

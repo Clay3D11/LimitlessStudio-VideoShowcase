@@ -7,6 +7,15 @@ menuToggle.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", siteHeader.classList.toggle("is-open"));
 });
 
+/* On phones, tapping Showcase opens its dropdown list instead of scrolling */
+const navDrop = document.querySelector(".nav-drop");
+navDrop.firstElementChild.addEventListener("click", event => {
+  if (!matchMedia("(max-width: 640px)").matches) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  navDrop.classList.toggle("is-open");
+});
+
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", event => {
     const target = document.querySelector(link.getAttribute("href"));

@@ -1,0 +1,166 @@
+/* Shared styles the Store / Tickets / iPod popups need,
+   copied from Limitlessmusic.official(Updated) (style.css, allbutton.css, titles.css)
+   and scoped to the popups so they don't change the rest of this site. */
+
+/* Keep the popups above the site header (z-index 10) and the quick dock */
+#myModal,
+#ticketsModal,
+#ipodModal {
+  z-index: 1000;
+}
+
+/* Store modal content can be taller than the screen */
+#myModal .modal-content,
+.tickets-modal-content,
+.ipod-modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/* Close (x) buttons sit on top of the content */
+.closeBtn,
+.ticketsCloseBtn,
+.ipodCloseBtn {
+  z-index: 2;
+  line-height: 1;
+}
+
+.tickets-modal-content {
+  position: relative;
+}
+
+/* .title */
+.modal .title {
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  font-family: 'Times New Roman', serif;
+  text-shadow: 0 0 5px #00fffb, 0 0 10px #0081bc;
+}
+
+/* .titles */
+.modal .titles {
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-shadow: 0 0 20px #0400ff, 0 0 40px #1100fff3;
+  z-index: 0;
+  margin-top: 0;
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  text-align: center;
+  letter-spacing: 0;
+}
+
+/* h7 */
+.modal h7 {
+  display: block;
+  line-height: 80%;
+  transform: rotateX(0) rotateY(-25deg);
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  font-family: "Abril Fatface", serif;
+}
+
+/* Store pricing card */
+.modal .ul-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 3rem auto 0;
+}
+
+.modal .ul-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 255, 251, 0.25);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0, 255, 251, .15);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.modal .ul-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 45px rgba(0, 255, 251, .4);
+}
+
+.modal .ul-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.modal .ul-price {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #00fffb;
+}
+
+.modal .ul-price span {
+  font-size: 1rem;
+  color: #aab3c5;
+}
+
+.modal .ul-desc {
+  font-size: .95rem;
+  color: #cfd7e6;
+  margin: 1rem 0;
+}
+
+.modal .ul-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.modal .ul-card ul li {
+  margin: .6rem 0;
+  font-size: .95rem;
+}
+
+/* .shadow__btn (From Uiverse.io by mrhyddenn) */
+.modal .shadow__btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  margin: auto;
+  position: relative;
+  background: rgba(0, 140, 255, 0);
+  box-shadow: 0 0 25px rgb(0, 140, 255);
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
+
+.modal .shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0, 140, 255),
+              0 0 25px rgb(0, 140, 255),
+              0 0 50px rgb(0, 140, 255),
+              0 0 100px rgb(0, 140, 255);
+}
+
+/* Phones: keep the iPod buttons inside the screen */
+@media (max-width: 480px) {
+  #ipodModal .repeat-track,
+  #ipodModal .random-track,
+  #ipodModal .playpause-track,
+  #ipodModal .prev-track,
+  #ipodModal .next-track {
+    padding: 12px;
+  }
+
+  #ipodModal .track-art {
+    width: 200px;
+    height: 200px;
+  }
+}
