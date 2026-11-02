@@ -122,18 +122,25 @@ const music_list = [
 
 
 
+    // {
+    //     img : 'assets/img/Soweto.png',
+    //     name : 'Soweto',
+    //     artist : 'Victony & Tempoe',
+    //     music : 'assets/music/Victony.Tempoe-Soweto.mp3'
+    // },
+    // {
+    //     img : 'assets/img/Kulosa.png',
+    //     name : 'Oxlade',
+    //     artist : 'Kulosa',
+    //     music : 'assets/music/Kulosa1.mp3',
+    //     video : 'assets/videos/KulosoEdit.mp4'
+    // },
     {
-        img : 'assets/img/Soweto.png',
-        name : 'Soweto',
-        artist : 'Victony & Tempoe',
-        music : 'assets/music/Victony.Tempoe-Soweto.mp3'
-    },
-    {
-        img : 'assets/img/Kulosa.png',
-        name : 'Oxlade',
-        artist : 'Kulosa',
-        music : 'assets/music/Kulosa1.mp3',
-        video : 'assets/videos/KulosoEdit.mp4'
+        img : 'assets/img/BookerT.png',
+        name : 'BookerT',
+        artist : 'Bad Bunny & BookerT',
+        music : 'assets/music/BookerT.mp3',
+        video : 'assets/videos/BookerTcom.mp4'
     },
     {
         img : 'assets/img/biggestfan.png',
