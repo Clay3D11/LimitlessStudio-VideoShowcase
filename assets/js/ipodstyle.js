@@ -14,12 +14,32 @@ let total_duration = document.querySelector('.total-duration');
 let wave = document.getElementById('wave');
 let randomIcon = document.querySelector('.fa-random');
 let curr_track = document.createElement('audio');
+let bgVideo = document.querySelector('.player-bg-video');
+let ipodModal = document.getElementById('ipodModal');
 
 let track_index = 0;
 let isPlaying = false;
 let isRandom = false;
 let updateTimer;
 
+// Playlist for the Music popup.
+// Each song:
+//   img    : cover picture (also the popup background when there is no video)
+//   name   : title shown in the player
+//   artist : artist shown in the player
+//   music  : the song file
+//   video  : (optional) your edit, plays muted on a loop behind the player.
+//            Use an .mp4 / .webm from assets/videos/ or a looping .gif.
+//            Leave it out to show the cover with the spinning circle instead.
+//
+// Example:
+//   {
+//       img    : 'assets/img/Kulosa.png',
+//       name   : 'Oxlade',
+//       artist : 'Kulosa',
+//       music  : 'assets/music/Kulosa1.mp3',
+//       video  : 'assets/videos/KulosoEdit.mp4'
+//   },
 const music_list = [
     // {
     //     img : 'assets/img/thug11.png',
@@ -112,7 +132,8 @@ const music_list = [
         img : 'assets/img/Kulosa.png',
         name : 'Oxlade',
         artist : 'Kulosa',
-        music : 'assets/music/Kulosa1.mp3'
+        music : 'assets/music/Kulosa1.mp3',
+        video : 'assets/videos/KulosoEdit.mp4'
     },
     {
         img : 'assets/img/biggestfan.png',
@@ -486,17 +507,46 @@ function loadTrack(track_index){
 
 
 
+// Background of the Music popup:
+// - song with a "video" (.mp4 / .webm) -> the video plays muted on a loop
+// - song with a "video" that is a .gif  -> the GIF loops as the background
+// - song without a "video"              -> the cover ("img") is the background
+// When there is a video or GIF, the spinning cover circle is hidden.
 function updateBackgroundImage() {
     const wrapper = document.querySelector('.wrapper');
-    const backgroundImage = `url(${music_list[track_index].img})`;
+    const track = music_list[track_index];
+    const isGif = track.video && /\.gif$/i.test(track.video);
+    const isVideo = track.video && !isGif;
 
-    // Use a blurred and darkened version of the image as the background
-    wrapper.style.background = `
-        linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.6)),
-        ${backgroundImage}`;
+    wrapper.classList.toggle('has-video', Boolean(track.video));
+    wrapper.style.backgroundImage = `url("${isGif ? track.video : track.img}")`;
     wrapper.style.backgroundSize = 'cover';
     wrapper.style.backgroundPosition = 'center';
     wrapper.style.backgroundRepeat = 'no-repeat';
+
+    if (!bgVideo) return;
+    if (isVideo) {
+        if (bgVideo.getAttribute('src') !== track.video) bgVideo.src = track.video;
+        bgVideo.poster = track.img;
+        playBackgroundVideo();
+    } else {
+        bgVideo.pause();
+        bgVideo.removeAttribute('src');
+        bgVideo.removeAttribute('poster');
+        bgVideo.load();
+    }
+}
+
+// Only play the background video while the Music popup is open (saves data)
+function playBackgroundVideo() {
+    if (!bgVideo || !bgVideo.getAttribute('src')) return;
+    if (ipodModal && ipodModal.classList.contains('show')) bgVideo.play().catch(() => {});
+    else bgVideo.pause();
+}
+
+if (ipodModal) {
+    new MutationObserver(playBackgroundVideo)
+        .observe(ipodModal, { attributes: true, attributeFilter: ['class'] });
 }
 
 

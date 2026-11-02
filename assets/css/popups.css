@@ -270,9 +270,23 @@
 /* ==========================================================
    Music: player (hooks used by assets/js/ipodstyle.js)
    ========================================================== */
+/* Full screen height: the background area will later hold a video / looping GIF */
 .modal-panel.is-player {
+  height: calc(100vh - 2rem);
+  height: calc(100dvh - 2rem);
   padding: 0;
   overflow: hidden;
+}
+
+.player,
+.player .wrapper {
+  height: 100%;
+}
+
+.player .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* ipodstyle.js paints the current song's cover onto .wrapper as the
@@ -290,6 +304,35 @@
   inset: 0;
   z-index: -1;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.75));
+}
+
+/* Background video (songs with a "video" in ipodstyle.js) */
+.player .player-bg-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.player .player-bg-video:not([src]) {
+  display: none;
+}
+
+/* With a video / GIF behind the player, hide the spinning cover circle */
+.player .wrapper.has-video .track-art {
+  display: none;
+}
+
+/* ...and keep the song info + controls at the bottom so the video shows */
+.player .wrapper.has-video {
+  justify-content: flex-end;
+}
+
+.player .wrapper.has-video .details {
+  margin-top: auto;
 }
 
 .player .track-name,
