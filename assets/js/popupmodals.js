@@ -22,12 +22,12 @@ if (dock) {
 
 /* ---------- Popups ---------- */
 const popups = [
-  { button: 'openModalBtn', modal: 'myModal',      close: '.closeBtn' },
-  { button: 'tickets',      modal: 'ticketsModal', close: '.ticketsCloseBtn' },
-  { button: 'ipodmodal',    modal: 'ipodModal',    close: '.ipodCloseBtn' },
+  { button: 'openModalBtn', modal: 'myModal' },
+  { button: 'tickets',      modal: 'ticketsModal' },
+  { button: 'ipodmodal',    modal: 'ipodModal' },
 ];
 
-popups.forEach(({ button, modal, close }) => {
+popups.forEach(({ button, modal }) => {
   const btn = document.getElementById(button);
   const box = document.getElementById(modal);
   if (!btn || !box) return;
@@ -38,9 +38,9 @@ popups.forEach(({ button, modal, close }) => {
     setDockOpen(false);
   });
 
-  // Close with the "x"
-  const closeBtn = box.querySelector(close);
-  if (closeBtn) closeBtn.addEventListener('click', () => box.classList.remove('show'));
+  // Close with the "x", or a link marked data-close (e.g. "Become a partner")
+  box.querySelectorAll('.modal-close, [data-close]').forEach(el =>
+    el.addEventListener('click', () => box.classList.remove('show')));
 
   // Close when clicking the dark background around the content
   box.addEventListener('click', event => {
@@ -56,6 +56,15 @@ document.addEventListener('keydown', event => {
     if (box) box.classList.remove('show');
   });
   setDockOpen(false);
+});
+
+// Music player controls are <div role="button">: let Enter / Space press them
+document.querySelectorAll('#player .buttons [role="button"]').forEach(control => {
+  control.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    control.click();
+  });
 });
 
 /* ---------- "Now playing" state on the dock ---------- */

@@ -18,12 +18,7 @@
   <link rel="stylesheet" href="assets/css/quickdock.css">
 
   <!-- Popups: Store, Music player, Tickets -->
-  <link rel="stylesheet" href="assets/css/storemodal.css">
-  <link rel="stylesheet" href="assets/css/ipodmodal.css">
-  <link rel="stylesheet" href="assets/css/ipodstyle.css">
-  <link rel="stylesheet" href="assets/css/ticketstoremodal.css">
-  <link rel="stylesheet" href="assets/css/ticketstorestyle.css">
-  <link rel="stylesheet" href="assets/css/popupextras.css">
+  <link rel="stylesheet" href="assets/css/popups.css">
 
   <!-- Nav mini player (Kulosa, from famelz.com) -->
   <link rel="stylesheet" href="assets/css/navplayer.css">
@@ -287,132 +282,117 @@
   </dialog>
 
   <!-- Store popup -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="closeBtn">&times;</span>
-      <div class="modal-body">
-        <section id="merch">
-          <div class="ul-pricing-grid title">
-            <div class="ul-card">
-              <h3>Associate/Partner</h3>
-              <div class="ul-price ul-year">
-                $--.-- <span>/ year</span>
-              </div>
-              <p class="ul-desc">
-                Built for brands, labels, and business owners ready to scale.
-              </p>
-              <ul>
-                <li>Full store integration</li>
-                <li>Brand & product placement</li>
-                <li>Exclusive collaboration campaigns</li>
-                <li>Custom merchandise drops</li>
-                <li>Dedicated account support</li>
-              </ul>
-              <a role="button" class="shadow__btn">Coming Soon</a>
-            </div>
-          </div>
-          <h7 style="margin: 0 auto;">25% Revenue <br> </h7>
-          <h7 style="margin: 0 auto;">stocking <br>Selling <br> Shipping</h7>
-        </section>
-      </div>
+  <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="storeTitle">
+    <div class="modal-panel">
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+      <p class="eyebrow">Store &middot; Partnership</p>
+      <h2 id="storeTitle">Associate / Partner</h2>
+      <p class="plan-price">$--.-- <span>/ year</span></p>
+      <p class="modal-lead">Built for brands, labels, and business owners ready to scale.</p>
+
+      <ul class="plan-perks">
+        <li class="is-gold">25% revenue</li>
+        <li>Stocking</li>
+        <li>Selling</li>
+        <li>Shipping</li>
+      </ul>
+
+      <ul class="plan-features">
+        <li>Full store integration</li>
+        <li>Brand &amp; product placement</li>
+        <li>Exclusive collaboration campaigns</li>
+        <li>Custom merchandise drops</li>
+        <li>Dedicated account support</li>
+      </ul>
+
+      <a class="button primary" href="#contact" data-close>Become a partner</a>
+      <p class="modal-note">Store launching soon. Reach out now to lock in your spot.</p>
     </div>
   </div>
 
-  <!-- Music player popup -->
-  <div id="ipodModal" class="modal">
-    <div class="ipod-modal-content">
-      <span class="ipodCloseBtn">&times;</span>
-      <div class="modal-body">
-        <section id="playlist" style="border-radius: 50%;">
-          <div id="player" class="player">
-            <div class="wrapper">
-              <div class="details">
-                <div class="now-playing">PLAYING x OF y</div>
-                <div class="track-art"></div>
-                <div class="track-name">Track Name</div>
-                <div class="track-artist">Track Artist</div>
-              </div>
+  <!-- Music player popup (hooks used by assets/js/ipodstyle.js) -->
+  <div id="ipodModal" class="modal" role="dialog" aria-modal="true" aria-label="Music player">
+    <div class="modal-panel is-player">
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+      <div id="player" class="player">
+        <div class="wrapper">
+          <div class="details">
+            <div class="now-playing">Playing x of y</div>
+            <div class="track-art"></div>
+            <div class="track-name">Track Name</div>
+            <div class="track-artist">Track Artist</div>
+          </div>
 
-              <div class="slider_container">
-                <div class="current-time">00:00</div>
-                <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
-                <div class="total-duration">00:00</div>
-              </div>
+          <div class="slider_container">
+            <div class="current-time">00:00</div>
+            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()" aria-label="Seek">
+            <div class="total-duration">00:00</div>
+          </div>
 
-              <div class="buttons">
-                <div class="random-track" onclick="randomTrack()">
-                  <i class="fas fa-random fa-2x" title="random"></i>
-                </div>
-                <div class="prev-track" onclick="prevTrack()">
-                  <i class="fa fa-step-backward fa-2x"></i>
-                </div>
-                <div class="playpause-track" onclick="playpauseTrack()">
-                  <i class="fa fa-play-circle fa-5x"></i>
-                </div>
-                <div class="next-track" onclick="nextTrack()">
-                  <i class="fa fa-step-forward fa-2x"></i>
-                </div>
-                <div class="repeat-track" onclick="repeatTrack()">
-                  <i class="fa fa-repeat fa-2x" title="repeat"></i>
-                </div>
-              </div>
+          <div class="buttons">
+            <div class="random-track" onclick="randomTrack()" role="button" tabindex="0" aria-label="Shuffle">
+              <i class="fas fa-random fa-2x"></i>
+            </div>
+            <div class="prev-track" onclick="prevTrack()" role="button" tabindex="0" aria-label="Previous">
+              <i class="fa fa-step-backward fa-2x"></i>
+            </div>
+            <div class="playpause-track" onclick="playpauseTrack()" role="button" tabindex="0" aria-label="Play / pause">
+              <i class="fa fa-play-circle fa-5x"></i>
+            </div>
+            <div class="next-track" onclick="nextTrack()" role="button" tabindex="0" aria-label="Next">
+              <i class="fa fa-step-forward fa-2x"></i>
+            </div>
+            <div class="repeat-track" onclick="repeatTrack()" role="button" tabindex="0" aria-label="Restart song">
+              <i class="fa fa-repeat fa-2x"></i>
             </div>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Tickets popup -->
-  <div id="ticketsModal" class="modal">
-    <div class="tickets-modal-content">
-      <span class="ticketsCloseBtn">&times;</span>
-      <div class="modal-body">
-        <h2 class="titles">Tickets</h2>
-        <div class="container-rtl">
-          <div class="column-br2">
-            <div>
-              <div>
-                <h3 class="title-lf6">United Palaza</h3>
-                <div class="show-qlj">
-                  <h3>Jun 18, 2024</h3>
-                  <h3>NY, NY</h3>
-                </div>
-              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
+  <div id="ticketsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="ticketsTitle">
+    <div class="modal-panel is-wide">
+      <button type="button" class="modal-close" aria-label="Close">&times;</button>
+      <p class="eyebrow">Live</p>
+      <h2 id="ticketsTitle">Tickets</h2>
+      <p class="modal-lead">Catch the show live. Grab your tickets before they sell out.</p>
 
-              <br>
-              <br>
-
-              <div>
-                <h3 class="title-lf6">Coachella</h3>
-                <div class="show-qlj">
-                  <h5 class="show-9ar">Jul 11, 2024</h5>
-                  <h5 class="show-cqt">California</h5>
-                </div>
-              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
-
-              <br>
-              <br>
-
-              <div>
-                <h3 class="title-lf6">Lollapalooza</h3>
-                <div class="show-qlj">
-                  <h5 class="show-9ar">Mar 28, 2020</h5>
-                  <h5 class="show-cqt">Colombia</h5>
-                </div>
-              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
-
-              <div>
-                <h3 class="title-lf6">Centro Olimpico</h3>
-                <div class="show-qlj">
-                  <h5 class="show-9ar">Agu 27, 2024</h5>
-                  <h5 class="show-cqt">D.R</h5>
-                </div>
-              </div><a role="button" class="nav-link-ej8 button-yfj rsv-f7w">TICKETS</a>
-            </div>
+      <ul class="show-list">
+        <li class="show-item">
+          <div class="show-date"><span class="month">Jun</span><span class="day">18</span><span class="year">2024</span></div>
+          <div class="show-info">
+            <h3>United Palace</h3>
+            <p>New York, NY</p>
           </div>
-        </div>
-      </div>
+          <a role="button" class="button primary">Tickets</a>
+        </li>
+        <li class="show-item">
+          <div class="show-date"><span class="month">Jul</span><span class="day">11</span><span class="year">2024</span></div>
+          <div class="show-info">
+            <h3>Coachella</h3>
+            <p>California</p>
+          </div>
+          <a role="button" class="button primary">Tickets</a>
+        </li>
+        <li class="show-item">
+          <div class="show-date"><span class="month">Mar</span><span class="day">28</span><span class="year">2020</span></div>
+          <div class="show-info">
+            <h3>Lollapalooza</h3>
+            <p>Colombia</p>
+          </div>
+          <a role="button" class="button primary">Tickets</a>
+        </li>
+        <li class="show-item">
+          <div class="show-date"><span class="month">Aug</span><span class="day">27</span><span class="year">2024</span></div>
+          <div class="show-info">
+            <h3>Centro Ol&iacute;mpico</h3>
+            <p>Dominican Republic</p>
+          </div>
+          <a role="button" class="button primary">Tickets</a>
+        </li>
+      </ul>
     </div>
   </div>
 
