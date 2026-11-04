@@ -134,7 +134,7 @@ const music_list = [
 
 
     {
-        img : 'assets/img/BookerT.png',
+        img : 'assets/img/posters/bookertcom.webp',
         name : 'BookerT',
         artist : 'Bad Bunny & BookerT',
         music : 'assets/music/BookerT.mp3',

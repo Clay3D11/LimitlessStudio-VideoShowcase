@@ -504,7 +504,14 @@
 /* ---------- Phones ---------- */
 @media (max-width: 480px) {
   .modal-panel {
+    max-height: calc(100dvh - 2rem);
     padding: 2rem 1.25rem 1.25rem;
+  }
+
+  /* Touch-sized close button */
+  .modal-close {
+    width: 2.75rem;
+    height: 2.75rem;
   }
 
   .player .track-art {
@@ -523,6 +530,7 @@
   .show-item .button {
     grid-column: 1 / -1;
     width: 100%;
+    min-height: 2.75rem;
   }
 }
 

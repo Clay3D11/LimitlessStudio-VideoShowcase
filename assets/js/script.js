@@ -3,18 +3,41 @@ const menuToggle = document.querySelector(".menu-toggle");
 const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 /* ---------- Navigation ---------- */
-menuToggle.addEventListener("click", () => {
-  menuToggle.setAttribute("aria-expanded", siteHeader.classList.toggle("is-open"));
+function setMenuOpen(open) {
+  siteHeader.classList.toggle("is-open", open);
+  menuToggle.setAttribute("aria-expanded", open);
+  menuToggle.textContent = open ? "×" : "☰";
+}
+
+menuToggle.addEventListener("click", () => setMenuOpen(!siteHeader.classList.contains("is-open")));
+
+/* Tapping outside the menu or pressing Escape closes it */
+document.addEventListener("click", event => {
+  if (!siteHeader.contains(event.target)) setMenuOpen(false);
 });
 
-/* On phones, tapping Showcase opens its dropdown list instead of scrolling */
-const navDrop = document.querySelector(".nav-drop");
-navDrop.firstElementChild.addEventListener("click", event => {
-  if (!matchMedia("(max-width: 640px)").matches) return;
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  navDrop.classList.toggle("is-open");
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") setMenuOpen(false);
 });
+
+/* The phone header turns solid once the page scrolls (see style.css) */
+const syncHeader = () => siteHeader.classList.toggle("is-scrolled", scrollY > 24);
+addEventListener("scroll", syncHeader, { passive: true });
+syncHeader();
+
+/* On phones, tapping Showcase opens its dropdown list instead of scrolling.
+   With only one link in the list there is nothing to choose, so it just scrolls. */
+const navDrop = document.querySelector(".nav-drop");
+if (navDrop.querySelectorAll(".nav-drop-menu a").length > 1) {
+  navDrop.firstElementChild.addEventListener("click", event => {
+    if (!matchMedia("(max-width: 640px)").matches) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    navDrop.classList.toggle("is-open");
+  });
+} else {
+  navDrop.classList.add("is-single");
+}
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", event => {
@@ -22,8 +45,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (!target) return;
 
     event.preventDefault();
-    siteHeader.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
+    setMenuOpen(false);
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
@@ -31,7 +53,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 /* ---------- Gallery data ----------
    [file in assets/videos, title, category, description, shape, duration]
    shape: "w" = wide feature, "v" = vertical, "t" = tall, "" = standard */
-const categories = { music: "Music Videos", ads: "Ads", art: "Visual Art", motion: "Motion FX" };
+const categories = { music: "Shorts", ads: "Ads", art: "Visual Art", motion: "Motion FX" };
 
 const works = [
   
@@ -104,7 +126,7 @@ const filters = document.querySelector(".filters");
 gallery.innerHTML = works.map(([file, title, cat, , shape, time], i) => `
   <button class="tile${shape ? ` tile--${shape}` : ""}" type="button" data-i="${i}" data-cat="${cat}" aria-label="Play ${title}">
     ${cat === "music"
-      ? `<video src="${videoSrc(file)}" poster="${posterSrc(file)}" autoplay muted loop playsinline preload="none"></video>`
+      ? `<video src="${videoSrc(file)}" poster="${posterSrc(file)}" data-autoplay muted loop playsinline preload="none"></video>`
       : `<img src="${posterSrc(file)}" alt="" loading="lazy" decoding="async">`}
     <span class="tile-time">${time}</span>
     <span class="tile-info"><small>${categories[cat]}</small><strong>${title}</strong></span>
@@ -112,22 +134,41 @@ gallery.innerHTML = works.map(([file, title, cat, , shape, time], i) => `
 
 const tiles = [...gallery.children];
 
-filters.innerHTML = [["all", "All"], ...Object.entries(categories)].map(([key, label]) => {
-  const count = key === "all" ? works.length : works.filter(work => work[2] === key).length;
-  return count ? `<button type="button" data-filter="${key}" aria-pressed="${key === "all"}">${label}<sup>${count}</sup></button>` : "";
-}).join("");
+const filterOptions = [["all", "All"], ...Object.entries(categories)]
+  .map(([key, label]) => [key, label, key === "all" ? works.length : works.filter(work => work[2] === key).length])
+  .filter(([, , count]) => count);
+
+/* Buttons on desktop, a dropdown on phones (style.css swaps them at 640px) */
+filters.innerHTML = filterOptions.map(([key, label, count]) =>
+  `<button type="button" data-filter="${key}" aria-pressed="${key === "all"}">${label}<sup>${count}</sup></button>`
+).join("") + `<select aria-label="Filter the gallery">${filterOptions.map(([key, label, count]) =>
+  `<option value="${key}">${label} (${count})</option>`
+).join("")}</select>`;
+
+const filterSelect = filters.querySelector("select");
+filterSelect.addEventListener("change", () => {
+  filters.querySelector(`[data-filter="${filterSelect.value}"]`).click();
+});
 
 filters.addEventListener("click", event => {
   const button = event.target.closest("button");
   if (!button) return;
 
+  filterSelect.value = button.dataset.filter;
   filters.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b === button));
   tiles.forEach(tile => {
     tile.hidden = button.dataset.filter !== "all" && tile.dataset.cat !== button.dataset.filter;
+    tile.classList.remove("tile--fill");
   });
+
+  /* An odd row of same-sized tiles: the last one fills the gap on phones (style.css) */
+  const visible = tiles.filter(tile => !tile.hidden);
+  if (visible.length % 2 && visible.every(tile => tile.className === visible[0].className)) {
+    visible.at(-1).classList.add("tile--fill");
+  }
 });
 
-filters.querySelector('[data-filter="music"]').click(); // Music Videos selected by default
+filters.querySelector('[data-filter="music"]').click(); // Shorts selected by default
 
 /* One shared muted preview plays on hover, so only one video ever loads at a time */
 if (matchMedia("(hover: hover)").matches) {
@@ -226,7 +267,9 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach(item => revealObserver.observe(item));
 
-/* ---------- Background videos only play while on screen ---------- */
+/* ---------- Background videos only load and play while on screen ----------
+   Use data-autoplay rather than autoplay: the real attribute makes the browser
+   download the video right away, even when it is far down the page. */
 const playObserver = new IntersectionObserver(entries => {
   entries.forEach(({ target, isIntersecting }) => {
     if (isIntersecting && !motionQuery.matches) target.play().catch(() => {});
@@ -234,4 +277,30 @@ const playObserver = new IntersectionObserver(entries => {
   });
 });
 
-document.querySelectorAll("video[autoplay]").forEach(video => playObserver.observe(video));
+document.querySelectorAll("video[autoplay], video[data-autoplay]").forEach(video => playObserver.observe(video));
+
+/* ---------- Slideshow plays only the clip on screen and the next one ---------- */
+const slideshow = document.querySelector(".slideshow");
+const slides = [...slideshow.querySelectorAll("video")];
+let slideTimer;
+
+function syncSlides() {
+  const keep = new Set();
+  slides.forEach((video, i) => {
+    if (+getComputedStyle(video).opacity > 0) keep.add(i).add((i + 1) % slides.length);
+  });
+  slides.forEach((video, i) => {
+    if (keep.has(i)) video.play().catch(() => {});
+    else video.pause();
+  });
+}
+
+new IntersectionObserver(([entry]) => {
+  clearInterval(slideTimer);
+  if (entry.isIntersecting && !motionQuery.matches) {
+    syncSlides();
+    slideTimer = setInterval(syncSlides, 1000);
+  } else {
+    slides.forEach(video => video.pause());
+  }
+}).observe(slideshow);

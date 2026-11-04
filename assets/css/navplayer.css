@@ -90,6 +90,16 @@
   }
 
   .audio-player {
+    width: 100%;
+    margin: 0;
     padding: 1.25rem 0 0.5rem;
+  }
+}
+
+/* Touch screens: the big hover zoom would stick after a tap */
+@media (hover: none) {
+  .play-btn:hover {
+    transform: none;
+    box-shadow: 0 10px 20px rgba(255, 75, 43, 0.4);
   }
 }
