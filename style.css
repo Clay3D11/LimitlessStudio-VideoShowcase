@@ -326,6 +326,12 @@ h3 {
   margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
+/* Heading in the logo style (Services): a bit bigger than the logo itself */
+.section-heading h2.logo {
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.25;
+}
+
 .section-heading p:not(.eyebrow) {
   color: var(--muted);
   font-size: 1.05rem;

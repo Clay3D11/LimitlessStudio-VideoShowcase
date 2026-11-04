@@ -1,4 +1,4 @@
-// Nav mini player: plays "Kulosa" (Oxlade) when the page opens,
+// Nav mini player: plays "Kulosa" (Oxlade) when the page opens on desktop,
 // round GIF button toggles play / pause.
 // Copied from famelz.com (js/firstautoplaybtn.js), cleaned up.
 
@@ -42,13 +42,18 @@ if (navAudio && navPlayBtn) {
       .catch(() => {}); // still blocked: try again on the next interaction
   };
 
-  navAudio.play()
-    .then(showState)
-    .catch(() => {
-      showState();
-      firstInteractionEvents.forEach(type =>
-        document.addEventListener(type, startOnFirstInteraction));
-    });
+  // Phones and tablets: no automatic sound, the visitor presses play themselves.
+  if (matchMedia('(hover: none)').matches) {
+    showState();
+  } else {
+    navAudio.play()
+      .then(showState)
+      .catch(() => {
+        showState();
+        firstInteractionEvents.forEach(type =>
+          document.addEventListener(type, startOnFirstInteraction));
+      });
+  }
 
   // Only one song at a time: pause this one when the Music popup plays,
   // and pause the Music popup when this one plays.
