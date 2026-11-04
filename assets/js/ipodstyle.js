@@ -117,11 +117,6 @@ const music_list = [
     //     music : 'assets/music/Gunna-oneofwun.mp3'
 
     // },
-
-
-
-
-
     // {
     //     img : 'assets/img/Soweto.png',
     //     name : 'Soweto',
@@ -135,6 +130,9 @@ const music_list = [
     //     music : 'assets/music/Kulosa1.mp3',
     //     video : 'assets/videos/KulosoEdit.mp4'
     // },
+
+
+
     {
         img : 'assets/img/BookerT.png',
         name : 'BookerT',
@@ -142,6 +140,13 @@ const music_list = [
         music : 'assets/music/BookerT.mp3',
         video : 'assets/videos/BookerTcom.mp4'
     },
+
+
+
+
+
+
+
     {
         img : 'assets/img/biggestfan.png',
         name : 'Biggest Fan',

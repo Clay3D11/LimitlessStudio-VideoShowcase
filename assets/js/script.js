@@ -34,27 +34,47 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 const categories = { music: "Music Videos", ads: "Ads", art: "Visual Art", motion: "Motion FX" };
 
 const works = [
-  ["Alofoke1.mp4", "Alofoke", "music", "Atmospheric music visual with warm glow and texture.", "w", "1:16"],
-  // ["KulosoEdit.mp4", "Kuloso", "music", "Full-length music video with moody color and cinematic framing.", "", "1:45"],
-  ["Superjoell(1st).mp4", "Superjoell 1", "music", "Performance-driven sequence with cinematic rhythm.", "", "0:15"],
-  ["BookerTcom.mp4", "Bad B & BookerT", "music", "Cinematic visual with dramatic contrast and light play.", "", "0:33"],
-  ["Superjoell(2nd).mp4", "Superjoell 2", "music", "Alternate music edit with punchy timing.", "", "0:15"],
-  ["Superjoell(Preview-7secs).mp4", "Superjoell", "music", "Seven-second teaser with fast visual energy.", "w", "0:07"],
-  ["Superjoell(3rd).mp4", "Superjoell 3", "music", "Stylized cut variation for a stronger visual flow.", "", "0:15"],
-  ["Superjoell(4rd).mp4", "Superjoell 4", "music", "High-energy scene work with layered motion.", "", "0:13"],
-  ["Superjoell(5th).mp4", "Superjoell 5", "music", "Polished sequence with cinematic color and pacing.", "", "0:09"],
   
+  ["Alofoke1.mp4", "Alofoke", "music", "Atmospheric music visual with warm glow and texture.", "w", "1:16"],
+
+  ["BookerTcom.mp4", "Bad B & BookerT", "music", "Cinematic visual with dramatic contrast and light play.", "w", "0:33"],
+
+
+  ["mickey.mp4", "Mickey Then", "music", "Music visual cut with clean pacing and stylized motion.", "w", "0:24"],
+
+  
+  
+  ["Superjoell(Preview-7secs).mp4", "Superjoell", "music", "Seven-second teaser with fast visual energy.", "", "0:07"],
+  ["Superjoell(1st).mp4", "Superjoell 1", "music", "Performance-driven sequence with cinematic rhythm.", "", "0:15"],
+  ["Superjoell(2nd).mp4", "Superjoell 2", "music", "Alternate music edit with punchy timing.", "", "0:15"],
+  ["Superjoell(3rd).mp4", "Superjoell 3", "music", "Stylized cut variation for a stronger visual flow.", "t", "0:15"],
+  ["Superjoell(4rd).mp4", "Superjoell 4", "music", "High-energy scene work with layered motion.", "", "0:13"],
+  
+  
+  ["mickeyjoell.mp4", "Mickey Then ft Joell", "music", "Music visual cut with clean pacing and stylized motion.", "w", "0:23"],
+  
+  ["Superjoell(5th).mp4", "Superjoell 5", "music", "Polished sequence with cinematic color and pacing.", "t", "0:09"],
+
+
+
+  ["Dariel30secsVideoCompress.mp4", "Dariel", "music", "Short-form promo edit built for quick social impact.", "t", "0:30"],
+
+
+
+
+  // ["KulosoEdit.mp4", "Kuloso", "music", "Full-length music video with moody color and cinematic framing.", "", "1:45"],
+
   // ["Famelz2026.mp4", "Famelz", "music", "Luxury performance visual with bold lighting and smooth camera moves.", "", "0:25"],
   // ["FatmelzToLoDia.mp4", "Fatmelz · To Lo Dia", "music", "Up-close performance edit cut tight to the beat.", "", "1:00"],
 
-  ["mickey.mp4", "Mickey Then", "music", "Music visual cut with clean pacing and stylized motion.", "w", "0:24"],
 
   // ["UnFlowZaza.mp4", "Un Flow Zaza", "music", "Street-styled music video with graffiti backdrops and punchy cuts.", "", "0:25"],
   // ["Clinvidremix1min.mp4", "Clin Remix", "music", "One-minute remix cut built around motion and attitude.", "", "1:00"],
   // ["wow-videogif.mp4", "WOW", "music", "Vibrant performance edit with saturated, high-energy color.", "", "0:27"],
 
 
-  ["Dariel30secsVideoCompress.mp4", "Dariel", "music", "Short-form promo edit built for quick social impact.", "", "0:30"],
+
+
   ["ad 1.mp4", "Promo Cut 01", "ads", "Short-form ad energy with clean pacing.", "t", "0:47"],
   ["ad 2.mp4", "Promo Cut 02", "ads", "Fast product rhythm for social feeds.", "t", "0:17"],
   ["ad 3.mp4", "Promo Cut 03", "ads", "Bold contrast, movement, and impact.", "t", "0:11"],
