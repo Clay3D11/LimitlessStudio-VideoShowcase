@@ -57,39 +57,35 @@ const categories = { music: "Shorts", ads: "Ads", art: "Visual Art", motion: "Mo
 
 const works = [
   
-  ["Alofoke1.mp4", "Alofoke", "music", "Atmospheric music visual with warm glow and texture.", "w", "1:16"],
+  ["Alofoke1.mp4", "Alofoke", "music", "Atmospheric music visual with warm glow and texture.", "t", "1:16"],
+  ["BookerTcom.mp4", "Bad B & BookerT", "music", "Cinematic visual with dramatic contrast and light play.", "t", "0:33"],
 
-  ["BookerTcom.mp4", "Bad B & BookerT", "music", "Cinematic visual with dramatic contrast and light play.", "w", "0:33"],
 
 
-  ["mickey.mp4", "Mickey Then", "music", "Music visual cut with clean pacing and stylized motion.", "w", "0:24"],
-
+  ["mickey.mp4", "Mickey Then", "music", "Music visual cut with clean pacing and stylized motion.", "", "0:24"],
+  ["mickeyjoell.mp4", "Mickey Then ft Joell", "music", "Music visual cut with clean pacing and stylized motion.", "", "0:23"],
   
   
+
+
   ["Superjoell(Preview-7secs).mp4", "Superjoell", "music", "Seven-second teaser with fast visual energy.", "", "0:07"],
   ["Superjoell(1st).mp4", "Superjoell 1", "music", "Performance-driven sequence with cinematic rhythm.", "", "0:15"],
   ["Superjoell(2nd).mp4", "Superjoell 2", "music", "Alternate music edit with punchy timing.", "", "0:15"],
-  ["Superjoell(3rd).mp4", "Superjoell 3", "music", "Stylized cut variation for a stronger visual flow.", "t", "0:15"],
+  ["Superjoell(3rd).mp4", "Superjoell 3", "music", "Stylized cut variation for a stronger visual flow.", "", "0:15"],
   ["Superjoell(4rd).mp4", "Superjoell 4", "music", "High-energy scene work with layered motion.", "", "0:13"],
+  ["Superjoell(5th).mp4", "Superjoell 5", "music", "Polished sequence with cinematic color and pacing.", "", "0:09"],
+
+
+
+  ["Dariel30secsVideoCompress.mp4", "Dariel", "music", "Short-form promo edit built for quick social impact.", "", "0:30"],
+
+
+
+
   
-  
-  ["mickeyjoell.mp4", "Mickey Then ft Joell", "music", "Music visual cut with clean pacing and stylized motion.", "w", "0:23"],
-  
-  ["Superjoell(5th).mp4", "Superjoell 5", "music", "Polished sequence with cinematic color and pacing.", "t", "0:09"],
-
-
-
-  ["Dariel30secsVideoCompress.mp4", "Dariel", "music", "Short-form promo edit built for quick social impact.", "t", "0:30"],
-
-
-
-
-  // ["KulosoEdit.mp4", "Kuloso", "music", "Full-length music video with moody color and cinematic framing.", "", "1:45"],
 
   // ["Famelz2026.mp4", "Famelz", "music", "Luxury performance visual with bold lighting and smooth camera moves.", "", "0:25"],
   // ["FatmelzToLoDia.mp4", "Fatmelz · To Lo Dia", "music", "Up-close performance edit cut tight to the beat.", "", "1:00"],
-
-
   // ["UnFlowZaza.mp4", "Un Flow Zaza", "music", "Street-styled music video with graffiti backdrops and punchy cuts.", "", "0:25"],
   // ["Clinvidremix1min.mp4", "Clin Remix", "music", "One-minute remix cut built around motion and attitude.", "", "1:00"],
   // ["wow-videogif.mp4", "WOW", "music", "Vibrant performance edit with saturated, high-energy color.", "", "0:27"],
@@ -100,11 +96,19 @@ const works = [
   ["ad 1.mp4", "Promo Cut 01", "ads", "Short-form ad energy with clean pacing.", "t", "0:47"],
   ["ad 2.mp4", "Promo Cut 02", "ads", "Fast product rhythm for social feeds.", "t", "0:17"],
   ["ad 3.mp4", "Promo Cut 03", "ads", "Bold contrast, movement, and impact.", "t", "0:11"],
+
+
+
   // ["bothworlds.mp4", "Both Worlds", "art", "Surreal 3D loop where two universes collide.", "v", "0:18"],
   // ["finishline.mp4", "Finish Line", "art", "Psychedelic tunnel loop in full color.", "v", "0:30"],
   // ["lastlap.mp4", "Last Lap", "art", "Hypnotic 3D ride through a checkered dreamscape.", "v", "0:35"],
   // ["nucleo.mp4", "Nucleo", "art", "Organic neon fractal growing in motion.", "v", "0:15"],
   // ["scify.mp4", "Sci-Fi", "art", "Kaleidoscopic sci-fi patterns built for vertical screens.", "v", "0:30"],
+
+
+
+
+
   ["fire.mp4", "Fire FX", "motion", "Ember and spark overlay for cinematic heat.", "", "0:30"],
   ["transitions.webm", "Transitions Pack", "motion", "Smooth scene changes ready to drop into any edit.", "", "0:11"],
   ["GlithPack.webm", "Glitch Pack", "motion", "Distortion, energy, and punchy style.", "", "0:09"],
