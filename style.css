@@ -1205,12 +1205,6 @@ h3 {
     display: flex;
   }
 
-  /* A wide video cropped to a full phone screen looks zoomed in and blurry */
-  .showcase-preview,
-  .slideshow {
-    min-height: 65svh;
-  }
-
   /* Tighter, even spacing between sections */
   .projects,
   .services {
